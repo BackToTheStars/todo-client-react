@@ -8,7 +8,7 @@ function Form(props) {
   const [description, setDescription] = useState('');
 
   const onSubmit = () => {
-    props.onSubmit({name, description});
+    props.createTodo({name, description});
     setName('');
     setDescription('');
   };
@@ -16,9 +16,11 @@ function Form(props) {
   return (
     <div>
 
-      <input type="text" value={name} onChange={e=> setName(e.target.value)} />
+      <input type="text" value={name}
+             onChange={e => setName(e.target.value)} />
       <input type="name" value={description}
              onChange={e => setDescription(e.target.value)} />
+
       <button onClick={onSubmit}>Create</button>
 
     </div>

@@ -28,9 +28,11 @@ function App() {
   const createTodo = (form) => {
     axios({
       url: 'http://localhost:5000/todo/',
-      method: 'POST'
+      method: 'POST',
+      data: form
     })
       .then(res => {
+        console.log("form: " + form);
         getTodoAll();
       })
       .catch(e => console.log(e));
@@ -49,7 +51,7 @@ function App() {
 
   return (
     <div>
-      <Form onSubmit={createTodo}/>
+      <Form createTodo={createTodo}/>
       <List list={list} remove={remove}/>
     </div>
   );
