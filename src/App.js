@@ -10,11 +10,10 @@ function App() {
 
   const getTodoAll = () => {
     axios({
-      url: 'http://localhost:5000/todo',
+      url: 'https://to-do-server-heroku-092.herokuapp.com/todo',
       method: 'GET'
     })
       .then(res => {
-        console.log(res);
         setList(res.data)
       })
       .catch(e => console.log(e));
@@ -27,7 +26,7 @@ function App() {
 
   const createTodo = (form) => {
     axios({
-      url: 'http://localhost:5000/todo/',
+      url: 'https://to-do-server-heroku-092.herokuapp.com/todo/',
       method: 'POST',
       data: form
     })
@@ -40,7 +39,7 @@ function App() {
 
   const remove = (id) => {
     axios({
-      url: `http://localhost:5000/todo/${id}`,
+      url: `https://to-do-server-heroku-092.herokuapp.com/todo/${id}`,
       method: 'DELETE'
     })
       .then(res => {
