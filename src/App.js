@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import Form from './Form'
 import List from './List'
+import Links from './Links'
 import axios from 'axios'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       method: 'GET'
     })
       .then(res => {
+        console.log(res);
         setList(res.data)
       })
       .catch(e => console.log(e));
@@ -37,6 +39,19 @@ function App() {
       .catch(e => console.log(e));
   };
 
+  const onToggleDone = (id, form) => {
+    axios({
+      url: `https://to-do-server-heroku-092.herokuapp.com/todo/${id}`,
+      method: 'PUT',
+      data: form
+    })
+      .then(res => {
+        console.log("onToggleDone form: " + form);
+        getTodoAll();
+      })
+      .catch(e => console.log(e));
+  };
+
   const remove = (id) => {
     axios({
       url: `https://to-do-server-heroku-092.herokuapp.com/todo/${id}`,
@@ -50,8 +65,9 @@ function App() {
 
   return (
     <div>
+      <Links />
       <Form createTodo={createTodo}/>
-      <List list={list} remove={remove}/>
+      <List list={list} remove={remove} onToggleDone={onToggleDone}/>
     </div>
   );
 }
