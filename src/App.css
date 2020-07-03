@@ -13,12 +13,12 @@ p {
 input {
   margin: 0 0 10px 10px;
 }
-li {
-  margin: 0 0 0px 10px;
+.listItem {
+  margin: 0 0 3px 10px;
 }
 .doneSign {
-  margin: 0 3px 0 3px;
+  margin: 0 3px 0 0;
 }
 button {
-  margin: 0 0 0 10px;
+  margin: 0 0 0 5px;
 }

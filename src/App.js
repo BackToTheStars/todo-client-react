@@ -33,7 +33,6 @@ function App() {
       data: form
     })
       .then(res => {
-        console.log("form: " + form);
         getTodoAll();
       })
       .catch(e => console.log(e));
@@ -46,7 +45,18 @@ function App() {
       data: form
     })
       .then(res => {
-        console.log("onToggleDone form: " + form);
+        getTodoAll();
+      })
+      .catch(e => console.log(e));
+  };
+
+  const saveTask = (form) => {
+    axios({
+      url: `https://to-do-server-heroku-092.herokuapp.com/todo/${form._id}`,
+      method: 'PATCH',
+      data: form
+    })
+      .then(res => {
         getTodoAll();
       })
       .catch(e => console.log(e));
@@ -67,7 +77,7 @@ function App() {
     <div>
       <Links />
       <Form createTodo={createTodo}/>
-      <List list={list} remove={remove} onToggleDone={onToggleDone}/>
+      <List list={list} remove={remove} onToggleDone={onToggleDone} saveTask={saveTask}/>
     </div>
   );
 }
