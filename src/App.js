@@ -3,16 +3,19 @@ import './App.css';
 import Form from './Form'
 import List from './List'
 import Links from './Links'
-import axios from 'axios'
+import axios from 'axios';
+// import api from './api/config' - пока не помогает
 
 function App() {
 
   const [list, setList] = useState([]);
 
   const getTodoAll = () => {
+    // api.get('todo')
     axios({
-      url: 'https://to-do-server-heroku-092.herokuapp.com/todo',
-      method: 'GET'
+      url: "https://to-do-server-heroku-092.herokuapp.com/todo",
+      method: 'GET',
+      header: {'Access-Control-Allow-Origin': '*'}
     })
       .then(res => {
         console.log(res);
@@ -20,7 +23,6 @@ function App() {
       })
       .catch(e => console.log(e));
     };
-
 
   useEffect(() => {
     getTodoAll();
